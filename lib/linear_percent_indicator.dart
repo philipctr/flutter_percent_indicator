@@ -274,10 +274,6 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
         final textPainter = TextPainter(
           text: TextSpan(
             text: text,
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
           ),
           textDirection: TextDirection.ltr,
         )..layout();
