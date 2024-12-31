@@ -286,7 +286,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
         }
         // Determine if text fits inside the progress bar
         final fitsInside =
-            ((hasSetWidth ? widget.width : double.infinity)! * _percent) >
+            ((hasSetWidth ? widget.width : double.infinity)! * progress) >
                 textWidth + 10;
         textPainter.text = TextSpan(
           text: text,
@@ -322,7 +322,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
                     ? ((hasSetWidth ? widget.width : double.infinity)! *
                             progress -
                         textWidth -
-                        18) // Center text
+                        24) // Center text
                     : ((hasSetWidth ? widget.width : double.infinity)! *
                             progress +
                         5), // Place outside
