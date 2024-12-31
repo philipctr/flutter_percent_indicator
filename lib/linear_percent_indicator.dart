@@ -284,7 +284,12 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
         final fitsInside =
             ((hasSetWidth ? widget.width : double.infinity)! * _percent) >
                 textWidth + 10;
-
+        textPainter.text = TextSpan(
+          text: text,
+          style: TextStyle(
+            color: fitsInside ? Colors.white : Colors.black.withOpacity(0.5),
+          ),
+        );
         return Container(
           width: hasSetWidth ? widget.width : double.infinity,
           height: widget.lineHeight,
@@ -313,7 +318,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
                     ? ((hasSetWidth ? widget.width : double.infinity)! *
                             _percent -
                         textWidth -
-                        10) // Center text
+                        14) // Center text
                     : ((hasSetWidth ? widget.width : double.infinity)! *
                             _percent +
                         5), // Place outside
