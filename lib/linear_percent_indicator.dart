@@ -320,13 +320,13 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
                   maskFilter: widget.maskFilter,
                   clipLinearGradient: widget.clipLinearGradient,
                 ),
-                child: widget.onlyIndicator
+                child: widget.onlyIndicator == true
                     ? Container()
                     : (widget.center != null)
                         ? Center(child: widget.center)
                         : Container(),
               ),
-              widget.onlyIndicator
+              widget.onlyIndicator == true
                   ? Positioned(
                       left: fitsInside
                           ? ((hasSetWidth ? widget.width : double.infinity)! *
