@@ -103,6 +103,8 @@ class LinearPercentIndicator extends StatefulWidget {
   /// Return current percent value if animation is true.
   final Function(double value)? onPercentValue;
 
+  final bool onlyIndicator;
+
   LinearPercentIndicator({
     Key? key,
     this.fillColor = Colors.transparent,
@@ -134,6 +136,7 @@ class LinearPercentIndicator extends StatefulWidget {
     this.widgetIndicator,
     this.progressBorderColor,
     this.onPercentValue,
+    this.onlyIndicator = false,
   }) : super(key: key) {
     if (linearGradient != null && progressColor != null) {
       throw ArgumentError(
@@ -316,14 +319,21 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
                   maskFilter: widget.maskFilter,
                   clipLinearGradient: widget.clipLinearGradient,
                 ),
-                child: Container(),
+                child: widget.onlyIndicator
+                    ? Container()
+                    : (widget.center != null)
+                        ? Center(child: widget.center)
+                        : Container(),
               ),
               Positioned(
                 left: fitsInside
                     ? ((hasSetWidth ? widget.width : double.infinity)! *
-                            progress -
-                        textWidth -
-                        30) // Center text
+                                    progress -
+                                textWidth -
+                                _percent >
+                            1.0
+                        ? 30
+                        : 10) // Center text
                     : ((hasSetWidth ? widget.width : double.infinity)! *
                             progress +
                         5), // Place outside
