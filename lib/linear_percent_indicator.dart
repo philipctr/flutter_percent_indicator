@@ -325,21 +325,23 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
                         ? Center(child: widget.center)
                         : Container(),
               ),
-              Positioned(
-                left: fitsInside
-                    ? ((hasSetWidth ? widget.width : double.infinity)! *
-                                    progress -
-                                textWidth -
-                                _percent >
-                            1.0
-                        ? 30
-                        : 10) // Center text
-                    : ((hasSetWidth ? widget.width : double.infinity)! *
-                            progress +
-                        5), // Place outside
-                top: widget.lineHeight / 2 - 10, // Center vertically
-                child: widget.center ?? Container(),
-              ),
+              widget.onlyIndicator
+                  ? Positioned(
+                      left: fitsInside
+                          ? ((hasSetWidth ? widget.width : double.infinity)! *
+                                          progress -
+                                      textWidth -
+                                      _percent >
+                                  1.0
+                              ? 30
+                              : 10) // Center text
+                          : ((hasSetWidth ? widget.width : double.infinity)! *
+                                  progress +
+                              5), // Place outside
+                      top: widget.lineHeight / 2 - 10, // Center vertically
+                      child: widget.center ?? Container(),
+                    )
+                  : Container(),
               if (widget.widgetIndicator != null && _indicatorWidth == 0)
                 Opacity(
                   opacity: 0.0,
