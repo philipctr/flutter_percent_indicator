@@ -147,10 +147,10 @@ class LinearPercentIndicator extends StatefulWidget {
     }
     _backgroundColor = backgroundColor ?? Color(0xFFB8C7CB);
 
-    if (percent < 0.0 || percent > 1.0) {
-      throw new Exception(
-          "Percent value must be a double between 0.0 and 1.0, but it's $percent");
-    }
+    // if (percent < 0.0 || percent > 1.0) {
+    //   throw new Exception(
+    //       "Percent value must be a double between 0.0 and 1.0, but it's $percent");
+    // }
   }
 
   @override
@@ -280,6 +280,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
         )..layout();
 
         final textWidth = textPainter.width;
+        print('leng ${text} $textWidth');
         double progress = _percent;
         if (progress > 1.0) {
           progress = 1.0;
