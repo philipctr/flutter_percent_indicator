@@ -270,7 +270,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
         _containerWidth = constraints.maxWidth;
         _containerHeight = constraints.maxHeight;
 
-        final text = '${(_percent * 100).toStringAsFixed(0)}%';
+        final text = '${(_percent * 100)}%';
         final textPainter = TextPainter(
           text: TextSpan(
             text: text,
