@@ -261,7 +261,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
     if (widget.leading != null) {
       items.add(widget.leading!);
     }
-    if (_percent > 1.0) _percent = 1.0;
+
     final hasSetWidth = widget.width != null;
     final percentPositionedHorizontal =
         _containerWidth * _percent - _indicatorWidth / 3;
@@ -280,7 +280,10 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
         )..layout();
 
         final textWidth = textPainter.width;
-
+        double progress = _percent;
+        if (progress > 1.0) {
+          progress = 1.0;
+        }
         // Determine if text fits inside the progress bar
         final fitsInside =
             ((hasSetWidth ? widget.width : double.infinity)! * _percent) >
@@ -317,11 +320,11 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
               Positioned(
                 left: fitsInside
                     ? ((hasSetWidth ? widget.width : double.infinity)! *
-                            _percent -
+                            progress -
                         textWidth -
                         18) // Center text
                     : ((hasSetWidth ? widget.width : double.infinity)! *
-                            _percent +
+                            progress +
                         5), // Place outside
                 top: widget.lineHeight / 2 - 10, // Center vertically
                 child: widget.center ?? Container(),
