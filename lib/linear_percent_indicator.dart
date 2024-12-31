@@ -268,6 +268,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
     var containerWidget = LayoutBuilder(builder: (context, constraints) {
       _containerWidth = constraints.maxWidth;
       _containerHeight = constraints.maxHeight;
+
       return Container(
         width: hasSetWidth ? widget.width : double.infinity,
         height: widget.lineHeight,
@@ -290,10 +291,21 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
                 maskFilter: widget.maskFilter,
                 clipLinearGradient: widget.clipLinearGradient,
               ),
-              child: (widget.center != null)
-                  ? Center(child: widget.center)
-                  : Container(),
+              child: Container(),
             ),
+            ((hasSetWidth ? widget.width : double.infinity)! * _percent < 60)
+                ? Positioned(
+                    left: (hasSetWidth ? widget.width : double.infinity)! *
+                            _percent +
+                        5,
+                    top: widget.lineHeight / 2 - 10,
+                    child: widget.center ?? Container())
+                : Positioned(
+                    left: (hasSetWidth ? widget.width : double.infinity)! *
+                            _percent -
+                        60,
+                    top: widget.lineHeight / 2 - 10,
+                    child: widget.center ?? Container()),
             if (widget.widgetIndicator != null && _indicatorWidth == 0)
               Opacity(
                 opacity: 0.0,
@@ -404,6 +416,7 @@ class _LinearPainter extends CustomPainter {
 
     // Then draw progress line
     final xProgress = size.width * progress;
+
     Path linePath = Path();
     Path linePathBorder = Path();
     double factor = progressBorderColor != null ? 2 : 0;
