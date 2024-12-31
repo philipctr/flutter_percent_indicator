@@ -290,7 +290,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
                 textWidth + 10;
 
         return Container(
-          width: _containerWidth,
+          width: hasSetWidth ? widget.width : double.infinity,
           height: widget.lineHeight,
           padding: widget.padding,
           child: Stack(
