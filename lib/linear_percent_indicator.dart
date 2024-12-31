@@ -313,7 +313,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
                     ? ((hasSetWidth ? widget.width : double.infinity)! *
                             _percent -
                         textWidth -
-                        5) // Center text
+                        10) // Center text
                     : ((hasSetWidth ? widget.width : double.infinity)! *
                             _percent +
                         5), // Place outside
