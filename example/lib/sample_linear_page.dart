@@ -37,9 +37,19 @@ class _SampleLinearPageState extends State<SampleLinearPage> {
                   animation: isRunning,
                   lineHeight: 20.0,
                   animationDuration: 3000,
-                  percent: 0.5,
+                  percent: 0.007,
                   animateFromLastPercent: true,
-                  center: Text("50.0%"),
+                  center: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    // Background color for better visibility
+                    child: Text(
+                      '80%', // Display the actual progress value
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                   progressColor: Colors.red,
                   widgetIndicator: RotatedBox(
                       quarterTurns: 1,
@@ -162,8 +172,8 @@ class _SampleLinearPageState extends State<SampleLinearPage> {
                   animation: true,
                   lineHeight: 20.0,
                   animationDuration: 2500,
-                  percent: 0.8,
-                  center: Text("80.0%"),
+                  percent: 0.08,
+                  center: Text("8%"),
                   barRadius: Radius.circular(5),
                   progressColor: Colors.green,
                 ),
