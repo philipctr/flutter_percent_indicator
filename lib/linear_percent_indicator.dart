@@ -261,6 +261,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
     if (widget.leading != null) {
       items.add(widget.leading!);
     }
+    if (_percent > 1.0) _percent = 1.0;
     final hasSetWidth = widget.width != null;
     final percentPositionedHorizontal =
         _containerWidth * _percent - _indicatorWidth / 3;
