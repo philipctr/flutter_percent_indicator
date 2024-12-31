@@ -171,7 +171,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
   double _containerHeight = 0.0;
   double _indicatorWidth = 0.0;
   double _indicatorHeight = 0.0;
-
+  double progress = 0.0;
   @override
   void dispose() {
     _animationController?.dispose();
@@ -180,6 +180,10 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
 
   @override
   void initState() {
+    double progress = _percent;
+    if (progress > 1.0) {
+      progress = 1.0;
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
@@ -284,10 +288,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
 
         final textWidth = textPainter.width;
         print('leng ${text} $textWidth');
-        double progress = _percent;
-        if (progress > 1.0) {
-          progress = 1.0;
-        }
+
         // Determine if text fits inside the progress bar
         final fitsInside =
             ((hasSetWidth ? widget.width : double.infinity)! * progress) >
