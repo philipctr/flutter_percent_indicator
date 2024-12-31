@@ -321,13 +321,7 @@ class _LinearPercentIndicatorState extends State<LinearPercentIndicator>
                             _percent +
                         5), // Place outside
                 top: widget.lineHeight / 2 - 10, // Center vertically
-                child: Text(
-                  text,
-                  style: TextStyle(
-                    color: fitsInside ? Colors.white : Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                child: widget.center ?? Container(),
               ),
               if (widget.widgetIndicator != null && _indicatorWidth == 0)
                 Opacity(
